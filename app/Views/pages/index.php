@@ -268,6 +268,8 @@
         let geomApar = JSON.parse('<?= $aparData->geoJSON; ?>')
         let latApar = parseFloat(<?= $aparData->lat; ?>)
         let lngApar = parseFloat(<?= $aparData->lng; ?>)
+
+        let base_url = '<?= base_url() ?>'
     </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

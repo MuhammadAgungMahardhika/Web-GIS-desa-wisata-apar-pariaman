@@ -1485,18 +1485,29 @@ function aparWeather() {
         iconUrl
       );
       // Mengupdate elemen HTML
+      const weatherTemp = document.getElementById("weatherTemp");
+      if (weatherTemp) {
+        weatherTemp.textContent = `${tempInCelsius}°C`;
+      }
 
-      document.getElementById("weatherTemp").textContent = `${tempInCelsius}°C`;
-      document.getElementById("weatherCloud").textContent =
-        weatherDescription.charAt(0).toUpperCase() +
-        weatherDescription.slice(1);
-      document.getElementById(
-        "weatherHumidity"
-      ).textContent = `Humidity: ${humidity}%`;
-      document.getElementById(
-        "weatherWind"
-      ).textContent = `Wind: ${windSpeed} m/s`;
-      document.querySelector("#weather-info img").src = iconUrl;
+      const weatherCloud = document.getElementById("weatherCloud");
+      if (weatherCloud) {
+        weatherCloud.textContent =
+          weatherDescription.charAt(0).toUpperCase() +
+          weatherDescription.slice(1);
+      }
+      const weatherHumidity = document.getElementById("weatherHumidity");
+      if (weatherHumidity) {
+        weatherHumidity.textContent = `Humidity: ${humidity}%`;
+      }
+      const weatherWind = document.getElementById("weatherWind");
+      if (weatherWind) {
+        weatherWind.textContent = `Wind: ${windSpeed} m/s`;
+      }
+      const weatherInfo = document.querySelector("#weather-info img");
+      if (weatherInfo) {
+        weatherInfo.src = iconUrl;
+      }
     },
     error: function (err) {},
   });
