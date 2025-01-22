@@ -1529,6 +1529,8 @@ function clearCarMarkers() {
   carMarkers = [];
 }
 function howToReachApar() {
+  $("#howToReachButton").addClass("disabled");
+
   clearAirplaneMarkers();
   clearCarMarkers();
   clearTextOverlay();
@@ -1730,10 +1732,20 @@ function howToReachApar() {
   `
   );
   map.setZoom(6);
-
   setTimeout(function () {
+    map.setZoom(10);
+  }, 5000);
+  setTimeout(function () {
+    map.setZoom(15);
+  }, 12000);
+  setTimeout(function () {
+    $("#howToReachButton").removeClass("disabled");
+    let latlng = new google.maps.LatLng(latApar, lngApar);
+    map.setCenter(latlng);
+    map.panTo(latlng);
+    moveCamera(15);
     clearAirplaneMarkers();
     clearCarMarkers();
     clearTextOverlay();
-  }, 18000);
+  }, 14000);
 }
