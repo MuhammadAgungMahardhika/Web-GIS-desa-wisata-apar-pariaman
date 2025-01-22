@@ -26,9 +26,8 @@
         <div class="col-md-6 col-12">
             <!-- Object Location on Map -->
             <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title">Google Maps</h5>
-                </div>
+                <!-- Object Map body -->
+                <?= $this->include('layout/map-head'); ?>
                 <!-- Object Map body -->
                 <?= $this->include('layout/map-body'); ?>
             </div>
@@ -93,7 +92,7 @@
 
     function currentUserRating() {
         <?php if (logged_in() == false) : ?>
-            return console.log('No user detected')
+
         <?php else : ?>
             $.ajax({
                 url: "<?= base_url('detail_object'); ?>" + "/" + url + "/" + id,

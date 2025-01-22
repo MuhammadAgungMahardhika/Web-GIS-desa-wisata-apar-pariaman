@@ -17,6 +17,7 @@ let mapStyles = [
   },
 ];
 
+aparWeather();
 function initMap() {
   showMap(); //show map , polygon, legend
   directionsRenderer = new google.maps.DirectionsRenderer(); //render route
@@ -1384,6 +1385,59 @@ function setMarker(shape, url = null) {
   document.getElementById("longitude").value = lng;
 }
 
+// Construct the polygon.
+function addAreaPolygon(geoJson, color, clear = true) {
+  if (clear) {
+    clearAreaGeom();
+  }
+  // Load GeoJSON.
+  map.data.addGeoJson(geoJson);
+  map.data.setStyle({
+    fillColor: "#00b300",
+    strokeWeight: 0.5,
+    strokeColor: color,
+    fillOpacity: 0.1,
+    clickable: false,
+  });
+  var bounds = new google.maps.LatLngBounds();
+
+  // Loop through features
+  map.data.forEach(function (feature) {
+    var geo = feature.getGeometry();
+
+    geo.forEachLatLng(function (LatLng) {
+      bounds.extend(LatLng);
+    });
+  });
+  map.fitBounds(bounds);
+}
+
+// clear Apar geom on map
+function clearAreaGeom() {
+  if (map.data) {
+    map.data.forEach(function (feature) {
+      map.data.remove(feature);
+    });
+  }
+}
+function changeAreaGeom() {
+  let areaLevel = $("#area_geom").val();
+  if (areaLevel == "country") {
+    addAreaPolygon(indonesiaGeom, "#000000");
+  } else if (areaLevel == "province") {
+    addAreaPolygon(sumbarGeom, "#000000");
+  } else if (areaLevel == "city") {
+    addAreaPolygon(pariamanGeom, "#000000");
+  } else if (areaLevel == "subdistric") {
+    addAreaPolygon(kecamatanParianganGeom, "#000000");
+  } else {
+    let latlng = new google.maps.LatLng(latApar, lngApar);
+    map.setCenter(latlng);
+    map.panTo(latlng);
+    moveCamera(15);
+  }
+}
+
 function setPolygon(shape) {
   clearGeom();
   if (selectedShape) {
@@ -1404,4 +1458,284 @@ function setPolygon(shape) {
       object.features[0].geometry
     );
   });
+}
+
+// weather
+function aparWeather() {
+  const apiWeather = "2390a9743ed947a7ab68238ae3039af1";
+  const lat = latApar;
+  const lng = lngApar;
+
+  $.ajax({
+    url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiWeather}`,
+    method: "get",
+    dataType: "json",
+    success: function (response) {
+      let data = response;
+
+      const tempInCelsius = (data.main.temp - 273.15).toFixed(2); // Konversi dari Kelvin ke Celsius
+      const weatherDescription = data.weather[0].description;
+      const humidity = data.main.humidity;
+      const windSpeed = data.wind.speed;
+      const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+      console.log(
+        tempInCelsius,
+        weatherDescription,
+        humidity,
+        windSpeed,
+        iconUrl
+      );
+      // Mengupdate elemen HTML
+
+      document.getElementById("weatherTemp").textContent = `${tempInCelsius}°C`;
+      document.getElementById("weatherCloud").textContent =
+        weatherDescription.charAt(0).toUpperCase() +
+        weatherDescription.slice(1);
+      document.getElementById(
+        "weatherHumidity"
+      ).textContent = `Humidity: ${humidity}%`;
+      document.getElementById(
+        "weatherWind"
+      ).textContent = `Wind: ${windSpeed} m/s`;
+      document.querySelector("#weather-info img").src = iconUrl;
+    },
+    error: function (err) {},
+  });
+}
+
+// how to reach
+
+// how to reach
+let overlays = [];
+let airplaneMarkers = [];
+let carMarkers = [];
+
+function clearTextOverlay() {
+  // Loop through all overlays and remove them from the map
+  for (let i = 0; i < overlays.length; i++) {
+    overlays[i].setMap(null); // Remove overlay from map
+  }
+  overlays = []; // Clear the array
+}
+function clearAirplaneMarkers() {
+  for (i in airplaneMarkers) {
+    airplaneMarkers[i].setMap(null);
+  }
+  airplaneMarkers = [];
+}
+function clearCarMarkers() {
+  for (i in carMarkers) {
+    carMarkers[i].setMap(null);
+  }
+  carMarkers = [];
+}
+function howToReachApar() {
+  clearAirplaneMarkers();
+  clearCarMarkers();
+  clearTextOverlay();
+  clearMarker();
+  clearRoute();
+  clearRadius();
+
+  // objectMarker("SUM01", -0.52210813, 100.49432448);
+
+  // Coordinates
+  const singapore = { lat: 1.2854190117401771, lng: 103.8198 }; // Singapore
+  const malaysia = { lat: 3.1503614007038454, lng: 101.97940881384584 }; // Kuala Lumpur
+  const jakarta = { lat: -6.204170461185947, lng: 106.82277186754867 }; // Jakarta
+  const padang = { lat: -0.9478502987473912, lng: 100.3628232695202 }; // Padang
+  const bandaAceh = { lat: 5.537368838813003, lng: 95.50780215398227 }; // Banda Aceh
+  const nagariSumpu = { lat: latApar, lng: lngApar }; // Apar
+
+  // Animate flight
+  function animateFlight(map, fromLatLng, toLatLng) {
+    const airplaneIcon = {
+      url: base_url + "/media/icon/airplane.png", // Airplane icon path
+      scaledSize: new google.maps.Size(60, 60), // Icon size
+      anchor: new google.maps.Point(25, 25), // Center the icon
+    };
+
+    const airplaneMarker = new google.maps.Marker({
+      position: fromLatLng,
+      map: map,
+      icon: airplaneIcon,
+      title: "Flight",
+    });
+
+    airplaneMarkers.push(airplaneMarker); // Store marker for later clearing
+
+    let step = 0;
+    const totalSteps = 100; // Number of animation steps
+    const interval = setInterval(() => {
+      if (step <= totalSteps) {
+        const lat =
+          fromLatLng.lat +
+          (toLatLng.lat - fromLatLng.lat) * (step / totalSteps);
+        const lng =
+          fromLatLng.lng +
+          (toLatLng.lng - fromLatLng.lng) * (step / totalSteps);
+        const newPosition = { lat, lng };
+        airplaneMarker.setPosition(newPosition);
+        step++;
+      } else {
+        clearInterval(interval); // Stop animation when complete
+      }
+    }, 50); // Animation speed (50ms per step)
+  }
+
+  // Animate car
+  function animateCar(map, fromLatLng, toLatLng) {
+    const carIcon = {
+      url: base_url + "/media/icon/car.png", // Airplane icon path
+      scaledSize: new google.maps.Size(50, 50), // Icon size
+      anchor: new google.maps.Point(20, 20), // Center the icon
+    };
+
+    const carMarker = new google.maps.Marker({
+      position: fromLatLng,
+      map: map,
+      icon: carIcon,
+      title: "Car Journey",
+      zIndex: 1000,
+    });
+    carMarkers.push(carMarker); // Store marker for later clearing
+
+    let step = 0;
+    const totalSteps = 100;
+    const interval = setInterval(() => {
+      if (step <= totalSteps) {
+        const lat =
+          fromLatLng.lat +
+          (toLatLng.lat - fromLatLng.lat) * (step / totalSteps);
+        const lng =
+          fromLatLng.lng +
+          (toLatLng.lng - fromLatLng.lng) * (step / totalSteps);
+        const newPosition = { lat, lng };
+        carMarker.setPosition(newPosition);
+        step++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 50);
+  }
+
+  // Add text overlays
+  function createTextOverlay(map, position, steps) {
+    const overlay = new google.maps.OverlayView();
+
+    overlay.onAdd = function () {
+      const div = document.createElement("div");
+      div.style.position = "absolute";
+      div.style.fontSize = "14px";
+      div.style.fontWeight = "bold";
+      div.style.color = "#4a2f13";
+      div.style.backgroundColor = "#ffe6cc";
+      div.style.padding = "10px";
+      div.style.borderRadius = "5px";
+      div.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.3)";
+      div.style.zIndex = "9999";
+      div.innerHTML = steps;
+
+      const panes = this.getPanes();
+      panes.overlayLayer.appendChild(div);
+
+      this.draw = function () {
+        const projection = this.getProjection();
+        const positionPixel = projection.fromLatLngToDivPixel(position);
+        div.style.left = `${positionPixel.x}px`;
+        div.style.top = `${positionPixel.y}px`;
+      };
+
+      overlay.div = div; // Simpan referensi ke elemen DOM
+    };
+
+    overlay.onRemove = function () {
+      if (overlay.div) {
+        overlay.div.parentNode.removeChild(overlay.div);
+        overlay.div = null;
+      }
+    };
+
+    overlay.setMap(map);
+    overlays.push(overlay); // Simpan overlay dalam array
+    return overlay;
+  }
+
+  // Map animations
+  animateFlight(map, singapore, padang);
+  animateFlight(map, malaysia, padang);
+  animateCar(map, bandaAceh, nagariSumpu);
+  animateFlight(map, jakarta, padang);
+
+  setTimeout(() => {
+    animateCar(map, padang, nagariSumpu);
+  }, 6000); // Delay of 6 seconds before car animation
+
+  // Add overlays
+  createTextOverlay(
+    map,
+    singapore,
+    `
+    <div style="display: flex; align-items: center;">
+      
+      <div>
+        <b>From Singapore <img src="${base_url}/media/icon/singapore.png" alt="Singapore Flag" style="width: 24px; height: 16px; margin-right: 4px;">(SIN):</b><br>
+        1. Take a flight from Singapore (SIN) to Padang (PDG), Indonesia.<br>
+        2. Rent a car or take a taxi to Apar.
+      </div>
+    </div>
+  `
+  );
+
+  createTextOverlay(
+    map,
+    malaysia,
+    `
+    <div style="display: flex; align-items: center;">
+      
+      <div>
+        <b>From Kuala Lumpur <img src="${base_url}/media/icon/malaysia.png" alt="Malaysia Flag" style="width: 24px; height: 16px; margin-right: 4px;">(KUL):</b><br>
+        1. Take a flight from Kuala Lumpur (KUL) to Padang (PDG), Indonesia.<br>
+        2. Rent a car or take a taxi to Apar.
+      </div>
+    </div>
+  `
+  );
+
+  createTextOverlay(
+    map,
+    jakarta,
+    `
+    <div style="display: flex; align-items: center;">
+      
+      <div>
+        <b>From Jakarta <img src="${base_url}/media/icon/indonesia.png" alt="Indonesia Flag" style="width: 24px; height: 16px; margin-right: 4px;">:</b><br>
+        1. Take a domestic flight to Padang (PDG), Indonesia.<br>
+        2. Rent a car or take a taxi to Apar.
+      </div>
+    </div>
+  `
+  );
+
+  createTextOverlay(
+    map,
+    bandaAceh,
+    `
+    <div style="display: flex; align-items: center;">      
+      <div>
+        <b>From anywhere in Sumatra <img src="${base_url}/media/icon/indonesia.png" alt="Indonesia Flag" style="width: 24px; height: 16px; margin-right: 4px;">:</b><br>
+        1. Travel by land directly to Apar.<br>
+        2. Alternatively, fly to Padang (PDG) and take a car or taxi to Apar.
+      </div>
+    </div>
+  `
+  );
+  map.setZoom(6);
+
+  setTimeout(function () {
+    clearAirplaneMarkers();
+    clearCarMarkers();
+    clearTextOverlay();
+  }, 18000);
 }
