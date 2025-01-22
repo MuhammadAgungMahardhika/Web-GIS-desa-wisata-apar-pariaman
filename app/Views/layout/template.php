@@ -37,6 +37,10 @@
 </head>
 
 <body>
+    <script>
+        let base_url = '<?= base_url() ?>'
+    </script>
+
     <div class="loader-wrapper">
         <img src="<?= base_url('/assets/images/pesona_apar.png'); ?>" class="loader">
     </div>

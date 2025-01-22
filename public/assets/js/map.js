@@ -1,5 +1,3 @@
-let base_url = "http://localhost:8080"; //untuk php spark serve
-// let base_url = 'http://192.168.100.172:80/Codeigniter4-Framework/desa-wisata-apar-pariaman/public/' //Untuk mobile
 let userPosition, userMarker, directionsRenderer, infoWindow, circle, map;
 let markerArray = [];
 let markerNearby;
