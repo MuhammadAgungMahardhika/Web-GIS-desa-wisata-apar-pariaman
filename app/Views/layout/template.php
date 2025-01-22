@@ -15,23 +15,27 @@
     <link rel="stylesheet" href="<?= base_url('/assets/css/main/style.css') ?>">
 
     <!-- Third Party Icon -->
-    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <script src="<?= base_url('assets/js/extensions/iconify.min.js') ?>"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/boxicon/boxicons.min.css'); ?>">
     <!-- Third Party CSS and JS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/shared/iconly.css'); ?>">
+    <!-- font google -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,200,0,0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" integrity="sha512-mSYUmp1HYZDFaVKK//63EcZq4iFWFjxSL+Z3T/aCt4IO9Cejm03q3NKKYN6pFQzY0SBOr8h+eCIAZHPXcpZaNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js" integrity="sha512-T/tUfKSV1bihCnd+MxKD0Hm1uBBroVYBOYSk1knyvQ9VyZJpc/ALb4P0r6ubwVPSGB2GvjeoMAJJImBG12TiaQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://kit.fontawesome.com/de7d18ea4d.js" crossorigin="anonymous"></script>
-    <!-- Sweet Alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Animate css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
+    <!-- Jquery -->
+    <script src="<?= base_url('assets/js/extensions/jquery-3.6.0.min.js') ?>"></script>
+    <!-- datepicker -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/datepicker/bootstrap-datepicker.min.css') ?>" />
+    <script src="<?= base_url('assets/js/extensions/bootstrap-datepicker.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/extensions/de7d18ea4d.js') ?>"></script>
+
+    <!-- Sweet Alert -->
+    <script src="<?= base_url('assets/js/extensions/sweetalert2@11.js') ?>"></script>
+    <!-- Animate css -->
+    <link rel="stylesheet" href="<?= base_url('assets/css/animate/animate.min.css') ?>" />
+    <!-- GSAP -->
+    <script src="<?= base_url('assets/js/extensions/gsap.min.js') ?>"></script>
     <script src="<?= base_url('/assets/js/geom.js') ?>"></script>
     <?= $this->renderSection('head'); ?>
 </head>

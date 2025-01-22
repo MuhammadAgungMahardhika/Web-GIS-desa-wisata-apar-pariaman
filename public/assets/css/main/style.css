@@ -1,310 +1,327 @@
- /* Costume css */
- @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+/* Costume css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
-
- /* Awal header==============================================================*/
- #landing {
-   position: relative;
-   z-index: 1;
-   width: 100%;
-   background-size: cover;
-   background-attachment: fixed;
- }
-
- #bg::after {
-   z-index: -1;
-   content: '';
-   display: block;
-   width: 100%;
-   height: 60%;
-   background-image: linear-gradient(to top, rgb(28, 28, 28), rgba(0, 0, 0, 0));
-   position: absolute;
-   left: 0;
-   right: 0;
-   bottom: 0;
- }
-
- /* Akhir header---------------------------------------------------------------*/
-
- /* Awal About me===============================================================*/
- #About {
-   position: relative;
-   padding-top: 50px;
-   z-index: 3;
-   width: 100%;
-   background-color: white;
-   color: black;
- }
-
- 
-.hover-efek:hover{
-  filter:brightness(105%)
+/* Awal header==============================================================*/
+#landing {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
- .efek1 {
-   opacity: 0;
-   transform: translate(-10px, 0px);
- }
+#bg::after {
+  z-index: -1;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 60%;
+  background-image: linear-gradient(to top, rgb(28, 28, 28), rgba(0, 0, 0, 0));
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
- .facts {
-  background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../../../media/photos/landing-page/bg-about.jpg) center center no-repeat;
+/* Akhir header---------------------------------------------------------------*/
+
+/* Awal About me===============================================================*/
+#About {
+  position: relative;
+  padding-top: 50px;
+  z-index: 3;
+  width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.hover-efek:hover {
+  filter: brightness(105%);
+}
+
+.efek1 {
+  opacity: 0;
+  transform: translate(-10px, 0px);
+}
+
+.facts {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(../../../media/photos/landing-page/bg-about.jpg) center center no-repeat;
   background-size: cover;
 }
 
- /* Akhir About Me-------------------------------------------------------------*/
+/* Akhir About Me-------------------------------------------------------------*/
 
- /* Awal Project================================================================*/
- #MyProjects {
-   position: relative;
-   z-index: 3;
-   width: 100%;
-   padding-top: 50px;
-   background-color: white;
-   color: black;
- }
+/* Awal Project================================================================*/
+#MyProjects {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: 50px;
+  background-color: white;
+  color: black;
+}
 
+#MyProjects .alllanding-body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 2px;
+  justify-content: center;
+}
 
- #MyProjects .alllanding-body {
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: row;
-   padding: 2px;
-   justify-content: center;
- }
+#MyProjects .allcard {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 2px;
+  justify-content: center;
+}
 
- #MyProjects .allcard {
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: row;
-   padding: 2px;
-   justify-content: center;
- }
+.efek2 {
+  opacity: 0;
+  transform: translate(-10px, 0px);
+}
 
- .efek2 {
-   opacity: 0;
-   transform: translate(-10px, 0px);
- }
+/* Akhir Project--------------------------------------------------------------*/
 
- /* Akhir Project--------------------------------------------------------------*/
+/* Awal Cerfificate---------------------------------------------------------- */
 
- /* Awal Cerfificate---------------------------------------------------------- */
+#MyCertificates {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: 50px;
+  background-color: white;
+  color: black;
+}
 
- #MyCertificates {
-   position: relative;
-   z-index: 3;
-   width: 100%;
-   padding-top: 50px;
-   background-color: white;
-   color: black;
+#MyCertificates .allcertificate {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 2px;
+  justify-content: center;
+}
 
- }
+#MyCertificates .allcertificate .card img {
+  padding: 2px;
+  height: 150px;
+}
 
- #MyCertificates .allcertificate {
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: row;
-   padding: 2px;
-   justify-content: center;
- }
+.star {
+  position: absolute;
+  z-index: 1;
+  left: 2%;
+  bottom: 2%;
+  color: white;
+  font-size: 12px;
+}
 
- #MyCertificates .allcertificate .card img {
-   padding: 2px;
-   height: 150px;
- }
+.efek3 {
+  opacity: 0;
+  transform: translate(-10px, 0px);
+}
 
- .star {
-   position: absolute;
-   z-index: 1;
-   left: 2%;
-   bottom: 2%;
-   color: white;
-   font-size: 12px;
- }
+/* Akhir Certificate--------------------------------------------------------- */
 
- .efek3 {
-   opacity: 0;
-   transform: translate(-10px, 0px);
- }
+/* Awal Contacts==============================================================*/
 
- /* Akhir Certificate--------------------------------------------------------- */
+#MyContacts {
+  position: relative;
+  z-index: 3;
+  padding-top: 50px;
+  color: white;
+  background-color: rgb(0, 39, 60);
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+}
 
- /* Awal Contacts==============================================================*/
+#MyContacts::after {
+  z-index: -1;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to top, rgb(28, 28, 28), rgba(0, 0, 0, 0));
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
 
- #MyContacts {
-   position: relative;
-   z-index: 3;
-   padding-top: 50px;
-   color: white;
-   background-color: rgb(0, 39, 60);
-   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.5);
+#MyContacts .fa-whatsapp {
+  color: #25d366;
+}
 
- }
+#MyContacts .fa-linkedin {
+  color: #007bb5;
+}
 
- #MyContacts::after {
-   z-index: -1;
-   content: '';
-   display: block;
-   width: 100%;
-   height: 100%;
-   background-image: linear-gradient(to top, rgb(28, 28, 28), rgba(0, 0, 0, 0));
-   position: absolute;
-   left: 0;
-   bottom: 0;
- }
+#MyContacts .fa-instagram {
+  color: #c32aa3;
+}
 
+#MyContacts a:hover {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  transform: translate(0px, -5px);
+}
 
- #MyContacts .fa-whatsapp {
-   color: #25d366;
- }
+.efek4 {
+  opacity: 0;
+  transform: translate(-10px, 0px);
+}
 
- #MyContacts .fa-linkedin {
-   color: #007bb5;
- }
-
- #MyContacts .fa-instagram {
-   color: #c32aa3;
- }
-
- #MyContacts a:hover {
-   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-   transition: 0.5s;
-   transform: translate(0px, -5px);
- }
-
- .efek4 {
-   opacity: 0;
-   transform: translate(-10px, 0px);
- }
-
- .efek5{
+.efek5 {
   opacity: 0;
   transform: translate(15px, 0px);
 }
 
- /* Akhir Contacts-----------------------------------------------------------*/
+/* Akhir Contacts-----------------------------------------------------------*/
 
- /* Animation */
- .muncul {
-   opacity: 1;
-   transform: translate(0px, 0px);
-   transition-duration: 2s;
- }
+/* Animation */
+.muncul {
+  opacity: 1;
+  transform: translate(0px, 0px);
+  transition-duration: 2s;
+}
 
- @keyframes bergerak {
-   0% {
-     bottom: 0;
-   }
+@keyframes bergerak {
+  0% {
+    bottom: 0;
+  }
 
-   100% {
-     bottom: 0.5%;
-   }
- }
+  100% {
+    bottom: 0.5%;
+  }
+}
 
- #linear {
-   animation-timing-function: linear;
- }
+#linear {
+  animation-timing-function: linear;
+}
 
- #ease {
-   animation-timing-function: ease;
- }
+/* Pengaturan untuk berbagai animasi timing function */
+#ease {
+  animation-timing-function: ease;
+}
 
- #ease-in {
-   animation-timing-function: ease-in;
- }
+#ease-in {
+  animation-timing-function: ease-in;
+}
 
- #ease-out {
-   animation-timing-function: ease-out;
- }
+#ease-out {
+  animation-timing-function: ease-out;
+}
 
- #ease-in-out {
-   animation-timing-function: ease-in-out;
- }
+#ease-in-out {
+  animation-timing-function: ease-in-out;
+}
 
- /* akhir landing page */
- .loader-wrapper {
-   width: 100%;
-   height: 100%;
-   position: absolute;
-   top: 0;
-   left: 0;
-   bottom: 0;
-   right: 0;
-   background-color: white;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   z-index: 99999;
- }
+/* Loader wrapper - menutupi seluruh halaman */
+.loader-wrapper {
+  width: 100%;
+  height: 100%;
+  position: fixed; /* Agar tetap pada posisi meskipun halaman discroll */
+  top: 0;
+  left: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  visibility: visible; /* Pastikan loader terlihat */
+  overflow: hidden; /* Mencegah scroll di dalam loader */
+}
 
- .loader {
-   display: inline-block;
-   width: 250px;
-   height: 250px;
-   position: relative;
-   animation: loader 2s infinite ease;
- }
+/* Loader animation */
+.loader {
+  display: inline-block;
+  width: 250px;
+  height: 250px;
+  position: relative;
+  animation: loader 2s infinite ease-in-out; /* Animasi loader dengan ease-in-out */
+}
 
- .highligth {
-   opacity: 0.7;
- }
+/* Keyframes untuk animasi loader */
+@keyframes loader {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
 
- #legendPanel {
-   font-family: Arial, sans-serif;
-   background: #fff;
-   padding: 10px;
-   margin: 10px;
-   border: 3px solid #000;
- }
+.highligth {
+  opacity: 0.7;
+}
 
- .bg {
-   width: 100%;
-   min-height: 100vh;
-   display: flex;
-   padding: 30px;
-   align-items: flex-end;
-   position: relative;
-   overflow: hidden;
-   background-image: linear-gradient(to bottom, rgba(0, 0, 0, .1), rgba(0, 0, 0, .6));
- }
+#legendPanel {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  padding: 10px;
+  margin: 10px;
+  border: 3px solid #000;
+}
 
- .bg-video {
-   box-sizing: border-box;
-   min-width: 100%;
-   min-height: 100%;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   right: 0;
-   z-index: -1;
-   transform: translate(-50%, -50%);
- }
+.bg {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  padding: 30px;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.6)
+  );
+}
 
- .bg-content {
-   position: relative;
-   font-family: 'Poppins', sans-serif;
-   color: #eaeaea;
-   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-   transform: translate(-40px, 0);
-   opacity: 0;
- }
+.bg-video {
+  box-sizing: border-box;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 0;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+}
 
- .star-checked {
-   color: gold;
- }
+.bg-content {
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  color: #eaeaea;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  transform: translate(-40px, 0);
+  opacity: 0;
+}
 
- @keyframes loader {
-   0% {
-     transform: scale(1, 1);
-   }
+.star-checked {
+  color: gold;
+}
 
-   100% {
-     transform: scale(1.5, 1.5);
-   }
- }
+@keyframes loader {
+  0% {
+    transform: scale(1, 1);
+  }
 
- @media (min-width:1025px) {
-   .bg-video {
-     width: 100%;
-     min-height: 100%;
-   }
- }
+  100% {
+    transform: scale(1.5, 1.5);
+  }
+}
+
+@media (min-width: 1025px) {
+  .bg-video {
+    width: 100%;
+    min-height: 100%;
+  }
+}
