@@ -1,5 +1,5 @@
 # GIS Tourism Website for Apar Tourism Village in Pariaman City
-This is a GIS aplication that provides detail information about the uniqe tourism of Apar Tourism Village in Pariaman City. <br>
+This is a GIS aplication that provides detail information about the unique tourism of Apar Tourism Village in Pariaman City. <br>
 Programing Leanguage -PHP -Javascript
 
 # CodeIgniter 4 Application Starter
