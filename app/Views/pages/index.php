@@ -15,15 +15,12 @@
     <link href="<?= base_url('assets/lib/lightbox/css/lightbox.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('assets/lib/owlcarousel/assets/owl.carousel.min.css') ?>" rel="stylesheet" />
     <!-- Third Party CSS and JS -->
-    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/de7d18ea4d.js" crossorigin="anonymous"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Rubik+Dirt&display=swap" rel="stylesheet">
+    <script src="<?= base_url('assets/js/extensions/iconify.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/extensions/jquery-3.6.0.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/extensions/fontawesome.js') ?>"></script>
 
     <!-- Font google -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Rubik+Dirt&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&display=swap" rel="stylesheet">
     <!-- My CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/css/main/style.css') ?>" />
